@@ -3,7 +3,7 @@
 	var M=11;
 	var oDiv=document.getElementById('div1');
 	var aDiv=oDiv.getElementsByClassName('hid');
-	var oCard2 = document.querySelector('.card2');
+	var oCard4 = document.querySelector('.card4');
 	var x=-10;
 	var y=0;
 
@@ -13,7 +13,6 @@
 	var oWarp = document.querySelector('.warp');
 
 	oWarp.style.height = document.documentElement.clientHeight + 'px';
-
 
 	document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
 
@@ -48,13 +47,53 @@
 		})(oNewDiv,i);
 
 		oNewDiv.degY=360*(i-1)/M;
-
-		oNewDiv.innerHTML='<div class="img"><span class="over"><span class="shadow"></span></span></div>';
+		var oContent1 = '<div class="img">';
+		var oContent2 = '<span class="over"><span class="shadow"></span></span></div>';
+		switch (i) {
+			case 1:
+				oNewDiv.innerHTML=oContent1 + '<a href="www.baidu.com" class="link">点此预览</a>'+oContent2;
+				break;
+			case 0:
+				oNewDiv.innerHTML='<div class="img">111111<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 2:
+				oNewDiv.innerHTML='<div class="img">333333<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 3:
+				oNewDiv.innerHTML='<div class="img">4444<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 4:
+				oNewDiv.innerHTML='<div class="img">555555<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 5:
+				oNewDiv.innerHTML='<div class="img">666666<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 6:
+				oNewDiv.innerHTML='<div class="img">77777<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 7:
+				oNewDiv.innerHTML='<div class="img">88888<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 8:
+				oNewDiv.innerHTML='<div class="img">999999<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 9:
+				oNewDiv.innerHTML='<div class="img">1010<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 10:
+				oNewDiv.innerHTML='<div class="img">11 11 11<span class="over"><span class="shadow"></span></span></div>';
+				break;
+			case 11:
+				oNewDiv.innerHTML='<div class="img">121212<span class="over"><span class="shadow"></span></span></div>';
+				break;
+		}
+		/*oNewDiv.innerHTML='<div class="img">1111111111<span class="over"><span class="shadow"></span></span></div>';*/
 
 
 
 
 		oNewDiv=oNewDiv.getElementsByClassName('img')[0];
+
 
 
 		oNewDiv.style.background='url(images/img2/'+i+'.jpg)';
@@ -70,10 +109,33 @@
 
 	}
 
+	var aImg = document.querySelectorAll('.img');
+	for (var i = 0; i < aImg.length; i++) {
+		aImg[i].onmouseover = function () {
+			this.style.WebkitTransform = 'scale(1.3,1.3)';
+			this.style.MozTransform='scale(1.3,1.3)';
+			this.style.msTransform='scale(1.3,1.3)';
+			this.style.OTransform='scale(1.3,1.3)';
+			this.style.transform='scale(1.3,1.3)';
+		};
+		aImg[i].onmouseout = function () {
+			this.style.WebkitTransform = 'scale(1,1)';
+			this.style.MozTransform='scale(1,1)';
+			this.style.msTransform='scale(1,1)';
+			this.style.OTransform='scale(1,1)';
+			this.style.transform='scale(1,1)';
+		};
+		aImg[i].children[0].onclick = function(ev) {
+			alert(1);
+			var ev = ev ||event;
+			ev.cancelBubble = true;
+		}
 
 
-	oCard2.onmousedown=function (ev)
+
+	oCard4.onmousedown=function (ev)
 	{
+
 		var oEvent=ev||event;
 		var mouseStartX=oEvent.clientX;
 		var mouseStartY=oEvent.clientY;
@@ -102,8 +164,10 @@
 			lastY=oEvent.clientY;
 		};
 
-		document.onmouseup=function ()
+		document.onmouseup=function (ev)
 		{
+
+
 			document.onmousemove=null;
 			document.onmouseup=null;
 
@@ -139,28 +203,14 @@
 	}
 
 
-	var aImg = document.querySelectorAll('.img');
-	for (var i = 0; i < aImg.length; i++) {
-		aImg[i].onmouseover = function () {
-			this.style.WebkitTransform = 'scale(1.3,1.3)';
-			this.style.MozTransform='scale(1.3,1.3)';
-			this.style.msTransform='scale(1.3,1.3)';
-			this.style.OTransform='scale(1.3,1.3)';
-			this.style.transform='scale(1.3,1.3)';
-		};
-		aImg[i].onmouseout = function () {
-			this.style.WebkitTransform = 'scale(1,1)';
-			this.style.MozTransform='scale(1,1)';
-			this.style.msTransform='scale(1,1)';
-			this.style.OTransform='scale(1,1)';
-			this.style.transform='scale(1,1)';
-		};
 
-			if(Math.abs(speedX)<0.2 && Math.abs(speedY)<0.2){
+
+		//aImg[i].style.href = 'www.baidu.com';
+		/*if(Math.abs(speedX)<0.2 && Math.abs(speedY)<0.2){
 			aImg[i].onclick = function () {
 				alert(1);
 			}
-		}
+		}*/
 
 	}
 

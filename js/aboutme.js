@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/4.
- */
 
 window.onload = function () {
     var oWarp = document.querySelector('.warp');
@@ -9,11 +6,16 @@ window.onload = function () {
     var oInf = document.querySelector('.information');
 
 
+//初次加载自适应屏幕
+    //oWarp.style.height = document.documentElement.clientHeight + 'px';
+    //document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
 
-    oWarp.style.height = document.documentElement.clientHeight + 'px';
-
-
-    document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
+    window.onresize = changeClient;
+//窗口大小改变自适应屏幕
+    function changeClient() {
+        document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
+        oWarp.style.height = document.documentElement.clientHeight + 'px';
+    };
 
     oImg.style.display = 'block';
     oImg.style.WebkitTransition = '1s all ease';
@@ -36,15 +38,9 @@ window.onload = function () {
     aText[0].style.left = '2.45rem';
     aText[1].style.right = '2.55rem';
     aText[3].style.top = '3rem';
-    //oText1.style.WebkitTransition= '1s all ease';
-    //aText[0].style.WebkitTransform = 'translateX(0)';
-    //aText[1].style.WebkitTransform = 'translateX(0)';
 
 
 
-    window.onresize = function () {
-        document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
-        oWarp.style.height = document.documentElement.clientHeight + 'px';
-    };
+
 
 };

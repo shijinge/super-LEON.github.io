@@ -4,6 +4,7 @@ html {font-size: 32px;}
     width: 10rem;
 
     margin:0 auto;
+    -overflow:hidden;
 
 }
 .ahead {
@@ -123,8 +124,15 @@ html {font-size: 32px;}
     bottom: 0.04rem;
 }
 
-
-
+.box .card2 {
+    background: yellow;
+}
+.box .card3 {
+    background: palegreen;
+}
+.box .card5 {
+    background: royalblue;
+}
 
 
 
