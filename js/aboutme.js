@@ -4,6 +4,12 @@ window.onload = function () {
     var oImg = document.querySelector('.box .card1 a');
     var aText = document.querySelectorAll('.card1 p');
     var oInf = document.querySelector('.information');
+    var aHead = document.querySelectorAll('.ahead li');
+    var aContent = document.querySelectorAll('.box >div');
+    var aCardtext = document.querySelectorAll('.ahead li a');
+    var iNow= 0;
+    //console.log(aContent);
+
 
 
 //初次加载自适应屏幕
@@ -38,6 +44,93 @@ window.onload = function () {
     aText[0].style.left = '2.45rem';
     aText[1].style.right = '2.55rem';
     aText[3].style.top = '3rem';
+
+    //选项卡
+    for(var i = 0; i < aHead.length; i++) {
+
+        (function (index){
+            aHead[i].onclick = function () {
+                iNow = index;
+                tab();
+            }
+
+            aHead[i].onmouseover = function () {
+                this.style.WebkitTransform = 'scale(1.5)';
+                aCardtext[index].style.display = 'block';
+                
+            };
+            aHead[i].onmouseout = function () {
+                this.style.WebkitTransform = 'scale(1)';
+                aCardtext[index].style.display = 'none';
+                
+            };
+        })(i);
+    }
+
+    //选项卡
+    function tab() {
+        for (var i = 0; i <aHead.length; i++) {
+            aHead[i].className = '';
+            aContent[i].style.display= 'none';
+        }
+        aHead[iNow].className = 'active';
+        aContent[iNow].style.display = 'block';
+
+    }
+    //鼠标滚轮事件
+    function addMouseWheel(obj,fn){
+        if(navigator.userAgent.toLowerCase().indexOf('firefox')!=-1){//firefox
+            obj.addEventListener('DOMMouseScroll',fnWheel,false);
+        }else{//others
+            //alert(1);
+            obj.onmousewheel=fnWheel;
+        }
+        function fnWheel(ev){
+            var oEvt=ev||event;
+            var down=false;
+            if(oEvt.wheelDelta){//chrome/ie
+                if(oEvt.wheelDelta<0) down=true;
+                else down=false;
+            }else if(oEvt.detail){//firefox
+                if(oEvt.detail>0) down=true;
+                else down=false;
+            }
+            fn(down);
+            if(oEvt.preventDefault){
+                oEvt.preventDefault();
+            }
+            return false;
+        }
+
+    }
+
+    var bOk = true;
+    addMouseWheel(document,function(down){
+        if(bOk) {
+            bOk = false;
+            if(down){
+
+                iNow++;
+                iNow %= 5;
+                tab()
+
+            }else{
+
+                iNow--;
+                if(iNow < 0) iNow = 4;
+                iNow %= 5;
+                tab()
+            }
+            setTimeout(function(){
+                bOk = true;
+            },1000)
+        }else{
+            return;
+        }
+
+
+
+    });
 
 
 

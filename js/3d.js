@@ -4,6 +4,8 @@
 	var oDiv=document.getElementById('div1');
 	var aDiv=oDiv.getElementsByClassName('hid');
 	var oCard4 = document.querySelector('.card4');
+	var aHead = document.querySelectorAll('.ahead li');
+
 	var x=-10;
 	var y=0;
 
@@ -16,35 +18,38 @@
 
 	document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
 
+
 	for(var i=1;i<=M;i++)
 	{
 		var oNewDiv=document.createElement('div');
 
 		oNewDiv.className='hid';
 
-		(function (oNewDiv,i){
-			setTimeout(function (){
-				oNewDiv.style.WebkitTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
-		oNewDiv.style.MozTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
-		oNewDiv.style.msTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
-		oNewDiv.style.OTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
-		oNewDiv.style.transform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
-
+			(function (oNewDiv,i){
 				setTimeout(function (){
-					if(i==M)fixAll();
+					oNewDiv.style.WebkitTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
+					oNewDiv.style.MozTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
+					oNewDiv.style.msTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
+					oNewDiv.style.OTransform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
+					oNewDiv.style.transform='rotateY('+(360*(i-1)/M)+'deg) translateZ(400px)';
 
 					setTimeout(function (){
+						if(i==M)fixAll();
 
-						oNewDiv.style.WebkitTransition='none';
-						oNewDiv.style.MozTransition='none';
-						oNewDiv.style.msTransition='none';
-						oNewDiv.style.OTransition='none';
-						oNewDiv.style.transition='none';
+						setTimeout(function (){
 
-					},1000);
-				}, 3000);
-			}, (M+3-i)*200);
-		})(oNewDiv,i);
+							oNewDiv.style.WebkitTransition='none';
+							oNewDiv.style.MozTransition='none';
+							oNewDiv.style.msTransition='none';
+							oNewDiv.style.OTransition='none';
+							oNewDiv.style.transition='none';
+
+						},1000);
+					}, 3000);
+				}, (M+3-i)*200);
+			})(oNewDiv,i);
+
+
 
 		oNewDiv.degY=360*(i-1)/M;
 		var oContent1 = '<div class="img">';

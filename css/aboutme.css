@@ -11,28 +11,53 @@ html {font-size: 32px;}
     position: absolute;
     right: 0.2rem;
     top: 50%;
-    margin-top: -1.1rem;
-    height: 2.2rem;
+    margin-top: -0.9rem;
+    height: 1.8rem;
     width: 0.2rem;
     z-index: 3;
+    -background: #666;
 
 }
 
 .ahead li {
+    position: relative;
     width: 0.2rem;
     height: 0.2rem;
     margin-top: 0.2rem;
     border-radius: 50%;
     background: #ccc;
+    -webkit-transform: scale(1,1);
+    -webkit-transition: .3s all ease;
+}
+@keyframes change {
+    from{opacity: 0.2}
+    to{opacity: 1}
+
 }
 .ahead li.active {
     background: yellow;
+
+    animation-name: change;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
 }
-.ahead li.no-top {
+#ahead1 {
     margin: 0;
 }
-.ahead li b {
+.ahead li a {
     display: none;
+    position: absolute;
+    width: 0.5rem;
+    height: 0.2rem;
+    left: -0.5rem;
+    top:50%;
+    margin-top: -0.1rem;
+    font:bold 0.1rem/0.2rem "宋体";
+    color:#eee;
+    text-align: center;
+    -background:red;
 }
 .box {
     width: 100%;
@@ -46,8 +71,10 @@ html {font-size: 32px;}
     position: relative;
    / -webkit-transform-style: preserve-3d;
    / -webkit-transform: perspective(1400px) rotateX(0) rotateY(0);
+    display: none;
 
 }
+
 .box .card1 {
     display: block;
 
@@ -57,7 +84,6 @@ html {font-size: 32px;}
 }
 .box .card1 a {
     position: relative;
-
     width: 1rem;
     height: 1rem;
     margin: auto;
@@ -125,7 +151,7 @@ html {font-size: 32px;}
 }
 
 .box .card2 {
-    background: yellow;
+    background: dodgerblue;
 }
 .box .card3 {
     background: palegreen;
