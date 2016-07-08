@@ -8,6 +8,7 @@ window.onload = function () {
     var aContent = document.querySelectorAll('.box >div');
     var aCardtext = document.querySelectorAll('.ahead li a');
     var iNow= 0;
+    var bOk = true;
     //console.log(aContent);
 
 
@@ -50,8 +51,14 @@ window.onload = function () {
 
         (function (index){
             aHead[i].onclick = function () {
-                iNow = index;
-                tab();
+                if(bOk) {
+                    bOk = false;
+                    iNow = index;
+                    tab();
+                }else {
+                    return;
+                }
+
             }
 
             aHead[i].onmouseover = function () {
@@ -76,35 +83,42 @@ window.onload = function () {
         aHead[iNow].className = 'active';
         aContent[iNow].style.display = 'block';
 
-    }
-    //鼠标滚轮事件
-    function addMouseWheel(obj,fn){
-        if(navigator.userAgent.toLowerCase().indexOf('firefox')!=-1){//firefox
-            obj.addEventListener('DOMMouseScroll',fnWheel,false);
-        }else{//others
-            //alert(1);
-            obj.onmousewheel=fnWheel;
+
+        if (iNow != 0) {
+            aContent[0].style.top = -aContent[iNow].offsetHeight + 'px';
+        }else if (iNow != 1) {
+            aContent[1].style.top = aContent[iNow].offsetHeight + 'px';
+        }else if (iNow != 2) {
+            aContent[2].style.top = -aContent[iNow].offsetHeight + 'px';
         }
-        function fnWheel(ev){
-            var oEvt=ev||event;
-            var down=false;
-            if(oEvt.wheelDelta){//chrome/ie
-                if(oEvt.wheelDelta<0) down=true;
-                else down=false;
-            }else if(oEvt.detail){//firefox
-                if(oEvt.detail>0) down=true;
-                else down=false;
-            }
-            fn(down);
-            if(oEvt.preventDefault){
-                oEvt.preventDefault();
-            }
-            return false;
+
+        switch (iNow) {
+            //注意！此处单位不可更改为‘rem’
+            case 0:
+
+                move(aContent[0], {top: 0}, {duration: 1200,
+                    easing: Tween.Bounce.easeOut,
+                    complete: function () {bOk = true}
+
+                });
+                break;
+            case 1:
+                //alert(aContent[0].offsetHeight)
+                //aContent[0].style.top = -aContent[iNow].offsetHeight + 'px';
+
+                move(aContent[1], {top: 0}, {duration: 1200,
+                    easing: Tween.Bounce.easeOut,
+                    complete: function () {bOk = true}
+
+                });
+                //注意！此处单位不可更改为‘rem’
+                break;
+
         }
 
     }
 
-    var bOk = true;
+
     addMouseWheel(document,function(down){
         if(bOk) {
             bOk = false;
@@ -121,19 +135,16 @@ window.onload = function () {
                 iNow %= 5;
                 tab()
             }
-            setTimeout(function(){
+            /*setTimeout(function(){
                 bOk = true;
-            },1000)
+            },1000)*/
         }else{
             return;
         }
-
-
-
+        
     });
 
 
-
-
+    
 
 };
