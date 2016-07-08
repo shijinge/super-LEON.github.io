@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6119f980-f2f7-484c-b014-75901ce854eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/bg001.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/aboutme.css" afterPath="$PROJECT_DIR$/css/aboutme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/aboutme.js" afterPath="$PROJECT_DIR$/js/aboutme.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/3d.js" afterPath="$PROJECT_DIR$/js/others.js" />
-    </list>
+    <list default="true" id="6119f980-f2f7-484c-b014-75901ce854eb" name="Default" comment="" />
     <ignored path="super-LEON.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -256,12 +248,12 @@
       <workItem from="1467877425381" duration="12408000" />
       <workItem from="1467908914239" duration="751000" />
       <workItem from="1467942928385" duration="11000" />
-      <workItem from="1467989010595" duration="14154000" />
+      <workItem from="1467989010595" duration="14222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37759000" />
+    <option name="totallyTimeSpent" value="37827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
