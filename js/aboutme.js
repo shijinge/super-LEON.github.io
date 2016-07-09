@@ -46,6 +46,12 @@ window.onload = function () {
     aText[1].style.right = '2.55rem';
     aText[3].style.top = '3rem';
 
+    move(aContent[0], {top: 0}, {duration: 1200,
+        
+        complete: function () {bOk = true}
+
+    });
+
     //选项卡
     for(var i = 0; i < aHead.length; i++) {
 

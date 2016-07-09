@@ -83,7 +83,7 @@ html {font-size: 32px;}
 
 .box .card1 {
     display: block;
-   - top: -10rem;
+    top: 5rem;
     background: yellowgreen;
     padding-top: 0.8rem;
     box-sizing: border-box;
