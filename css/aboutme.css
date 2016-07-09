@@ -83,7 +83,9 @@ html {font-size: 32px;}
 
 .box .card1 {
     display: block;
-    top: 5rem;
+    -top: -5rem;
+
+    -left:0;
     background: yellowgreen;
     padding-top: 0.8rem;
     box-sizing: border-box;
@@ -114,7 +116,7 @@ html {font-size: 32px;}
     margin: auto;
     border-radius: 50%;
     overflow: hidden;
-    -webkit-transform: scale(4,4);
+    -webkit-transform: scale(0.1,0.1);
     opacity: 0;
     display: none;
 
@@ -155,13 +157,15 @@ html {font-size: 32px;}
 
 }
 .box .card1 .text1 {
-    left:-6rem;
+    -left:-6rem;
+    left: 2.45rem;
     top: 1.5rem;
 
 }
 .box .card1 .text2 {
     top: 2rem;
-    right: -6rem;
+    -right: -6rem;
+    right: 2.55rem;
 
 }
 .box .card1 .text3 {
@@ -172,7 +176,8 @@ html {font-size: 32px;}
 .box .card1 .text4 {
     left: 2.45rem;
 
-    bottom: 0.04rem;
+    -bottom: 0.04rem;
+
 }
 
 .box .card2 {
