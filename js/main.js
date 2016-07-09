@@ -167,7 +167,7 @@ window.onload = function () {
 
     //为头像运动设置目标位置
     oImg.style.display = 'block';
-    oImg.style.WebkitTransition = '1s all ease 1.5s';
+    //oImg.style.WebkitTransition = '1s all ease 1.5s';
     setTimeout(function () {
         oImg.style.opacity = 1;
         oImg.style.WebkitTransform = 'scale(1,1)';
@@ -188,9 +188,6 @@ window.onload = function () {
 
     //为第四段文字设置运动目标位置
     aText[3].style.top = '3rem';
-    for(var i = 0; i < aText.length; i++) {
-        aText[i].style.opacity = 1;
-    }
 
 
 

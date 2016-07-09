@@ -115,6 +115,7 @@ html {font-size: 32px;}
     border-radius: 50%;
     overflow: hidden;
     -webkit-transform: scale(0.1,0.1);
+    -webkit-transition: 1s all ease 1s;
     opacity: 0;
     display: none;
 
@@ -151,8 +152,7 @@ html {font-size: 32px;}
     color: #fff;
     position:absolute;
 
-    transition: 1s all ease 0.5s;
-    opacity: 0;
+    transition: 1s all ease;
 
 }
 .box .card1 .text1 {
