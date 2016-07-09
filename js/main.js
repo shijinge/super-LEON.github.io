@@ -118,8 +118,8 @@ window.onload = function () {
             case 3:
 
                 movePic();
-                
-                move(aContent[iNow], {opacity: 1}, {duration: 1000,
+
+                move(aContent[iNow], {opacity: 1}, {duration: 1500,
                     easing: Tween.Sine.easeIn,
                     complete: function () {
                         bOk = true;
@@ -167,7 +167,7 @@ window.onload = function () {
 
     //为头像运动设置目标位置
     oImg.style.display = 'block';
-    oImg.style.WebkitTransition = '1s all ease';
+    oImg.style.WebkitTransition = '1s all ease 1.5s';
     setTimeout(function () {
         oImg.style.opacity = 1;
         oImg.style.WebkitTransform = 'scale(1,1)';
@@ -176,16 +176,21 @@ window.onload = function () {
     //添加头像滑入滑出效果
     oImg.onmouseover = function () {
         oInf.style.opacity = 1;
+        oImg.style.WebkitTransition = '0.5s all ease';
         oImg.style.WebkitTransform = 'scale(1.2,1.2)';
     };
 
     oImg.onmouseout = function () {
         oInf.style.opacity = 0;
+        oImg.style.WebkitTransition = '0.5s all ease';
         oImg.style.WebkitTransform = 'scale(1,1)';
     }
 
     //为第四段文字设置运动目标位置
     aText[3].style.top = '3rem';
+    for(var i = 0; i < aText.length; i++) {
+        aText[i].style.opacity = 1;
+    }
 
 
 

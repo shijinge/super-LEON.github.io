@@ -151,7 +151,8 @@ html {font-size: 32px;}
     color: #fff;
     position:absolute;
 
-    transition: 1s all ease;
+    transition: 1s all ease 0.5s;
+    opacity: 0;
 
 }
 .box .card1 .text1 {
