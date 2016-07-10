@@ -7,10 +7,6 @@ window.onload = function () {
     var aHead = document.querySelectorAll('.ahead li');
     var aContent = document.querySelectorAll('.box >div');
     var aCardtext = document.querySelectorAll('.ahead li a');
-    var aSkTxt = document.querySelectorAll('.sk-box span');
-    for(var i = 0; i < aSkTxt.length; i++) {
-        aSkTxt[i].style.lineHeight = aSkTxt[0].parentNode.parentNode.offsetHeight;
-    }
     var iNow= 0;
     var bOk = true;
     //console.log(aContent);
@@ -94,7 +90,8 @@ window.onload = function () {
                     easing: Tween.Bounce.easeOut,
                     complete: function () {
                         bOk = true;
-                        aContent[0].parentNode.style.background = '#3c9';
+                        aContent[0].parentNode.style.background = 'url(images/bg002.jpg) no-repeat';
+                        aContent[0].parentNode.style.backgroundSize = '100% 100%';
                     }
                 });
                 break;
@@ -103,7 +100,8 @@ window.onload = function () {
                     easing: Tween.Sine.easeIn,
                     complete: function () {
                         bOk = true;
-                        aContent[0].parentNode.style.background = '#cc0';
+                        aContent[0].parentNode.style.background = 'url(images/bg003.jpg) no-repeat';
+                        aContent[0].parentNode.style.backgroundSize = '100% 100%';
                     }
                 });
                 break;
@@ -112,7 +110,8 @@ window.onload = function () {
                     easing: Tween.Sine.easeIn,
                     complete: function () {
                         bOk = true;
-                        aContent[0].parentNode.style.background = '#369';
+                        aContent[0].parentNode.style.background = 'url(images/bg004.jpg) no-repeat';
+                        aContent[0].parentNode.style.backgroundSize = '100% 100%';
                     }
                 });
                 break;
@@ -124,7 +123,8 @@ window.onload = function () {
                     easing: Tween.Sine.easeIn,
                     complete: function () {
                         bOk = true;
-                        aContent[0].parentNode.style.background = '#09c';
+                        aContent[0].parentNode.style.background = 'url(images/bg005.jpg) no-repeat';
+                        aContent[0].parentNode.style.backgroundSize = '100% 100%';
                     }
                 });
                 break;
@@ -135,7 +135,8 @@ window.onload = function () {
                 },0);
                 setTimeout(function(){
                     bOk = true;
-                    aContent[0].parentNode.style.background = '#cc6';
+                    aContent[0].parentNode.style.background = 'url(images/bg001.jpeg) no-repeat';
+                    aContent[0].parentNode.style.backgroundSize = '100% 100%';
                 },1000);
                 break;
         }
@@ -163,6 +164,15 @@ window.onload = function () {
     });
 
 //选项卡1
+
+    //为头像运动设置目标位置
+    oImg.style.display = 'block';
+    //oImg.style.WebkitTransition = '1s all ease 1.5s';
+    setTimeout(function () {
+        oImg.style.opacity = 1;
+        oImg.style.WebkitTransform = 'scale(1,1)';
+    },0);
+
     //添加头像滑入滑出效果
     oImg.onmouseover = function () {
         oInf.style.opacity = 1;
@@ -176,7 +186,8 @@ window.onload = function () {
         oImg.style.WebkitTransform = 'scale(1,1)';
     }
 
-//选项卡2
+    //为第四段文字设置运动目标位置
+    aText[3].style.top = '3rem';
 
 
 

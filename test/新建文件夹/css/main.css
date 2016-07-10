@@ -17,7 +17,7 @@ html {font-size: 32px;}
     height: 1.8rem;
     width: 0.2rem;
     z-index: 3;
-    -background: #000;
+    -background: #666;
     display: none;
 
 
@@ -67,7 +67,8 @@ html {font-size: 32px;}
     width: 100%;
     height: 100%;
 
-    background: #366;
+    background: url(../images/bg001.jpeg) no-repeat;
+    background-size: 100% 100%;
     -webkit-transform-style: preserve-3d;
     -webkit-transform: perspective(800px) rotateX(0) rotateY(0);
 }
@@ -86,7 +87,7 @@ html {font-size: 32px;}
 
 .box .card1 {
     display: block;
-    background: #9acd32;
+    background: yellowgreen;
     box-sizing: border-box;
 }
 
@@ -113,10 +114,10 @@ html {font-size: 32px;}
     margin: 0.8rem auto;
     border-radius: 50%;
     overflow: hidden;
-
-    -webkit-transition: 1s all ease;
-    opacity: 1;
-    display: block;
+    -webkit-transform: scale(0.1,0.1);
+    -webkit-transition: 1s all ease 1s;
+    opacity: 0;
+    display: none;
 
 }
 .box .card1 a img {
@@ -151,7 +152,7 @@ html {font-size: 32px;}
     color: #fff;
     position:absolute;
 
-    transition: 1.5s all ease;
+    transition: 1s all ease;
 
 }
 .box .card1 .text1 {
@@ -172,76 +173,23 @@ html {font-size: 32px;}
     top: 2.5rem;
 }
 .box .card1 .text4 {
-    right: 2.45rem;
-    top: 3rem;
+    left: 2.45rem;
+
+    -bottom: 0.04rem;
 
 }
-
-
 
 .box .card2 {
-    background: #6cc;
+    background: dodgerblue;
 }
-
-.box .card2 .car2-title {
-    width: 100%;
-    height:20%;
-    background:#ccc;
-
-}
-.box .card2 .sk-box {
-    margin-left: 0.5rem;
-    width: 9rem;
-    height: 50%;
-    background: green;
-}
-
-.card2 .sk-box li {
-    width:33%;
-    height:100%;
-    border-left:1px solid red;
-    background:#666;
-    float: left;
-    text-align: center;
-
-
-}
-.card2 .sk-box .sk1-txt {
-    width: 100%;
-    height: 100%;
-    display: block;
-
-    font:bold 0.2rem "微软雅黑";
-    text-align: center;
-    line-height: 50%;
-    color: #fff;
-    background:red;
-
-}
-.card2 .sk-canvas-box li {
-    width:1.49rem;
-    height:100%;
-    border-left:1px solid blue;
-    background:#999;
-    float: left;
-}
-.box .card2 .sk-canvas-box {
-    margin-left: 0.5rem;
-    width: 9rem;
-    height: 30%;
-    background: yellow;
-}
-
-
-
 .box .card3 {
-    background: #fc3;
+    background: palegreen;
 }
 .box .card4 {
 
 }
 .box .card5 {
-    background: #699;
+    background: royalblue;
     -webkit-transform: scale(0.1,0.1);
     -webkit-transition: 1s all ease;
 
