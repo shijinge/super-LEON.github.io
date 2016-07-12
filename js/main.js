@@ -12,12 +12,8 @@ window.onload = function () {
 
     var iNow= 0;
     var bOk = true;
-    //console.log(aContent);
-
 
 //初次加载自适应屏幕
-    //changeClient();
-
     window.onresize = changeClient;
 
 //窗口大小改变自适应屏幕
@@ -99,25 +95,8 @@ window.onload = function () {
                 });
                 break;
             case 1:
-                //给技能描述遮罩设定初始位置
-                //由于在其他选项卡显示时，选项卡2状态为隐藏，无法获取oS的宽度和高度，所以加在此处，顺便给所有的遮罩加运动
-                for (var i = 0; i < aSkill.length; i++) {
-                    var oS = aSkill[i].children[1];
-                     oS.style.left = -oS.offsetWidth + 'px';
-                     oS.style.top = -oS.offsetHeight + 'px';
 
-                    through(aSkill[i]);
-                }
-
-                /*var aC = document.querySelectorAll('.card2 canvas');
-
-                for(var i = 0; i < aC.length; i++) {
-                    aC[i].width = aC[i].parentNode.offsetWidth;
-                    aC[i].height = aC[i].parentNode.offsetHeight;
-
-                }*/
-
-
+                case1();
 
                 move(aContent[iNow], {top: 0, left: 0}, {duration: 500,
                     easing: Tween.Sine.easeIn,
@@ -283,18 +262,112 @@ window.onload = function () {
             }
         };
     }
-    //以上调用在选项卡的case1里
+    //以上调用在函数case1里
 
-/*
-    var aC = document.querySelectorAll('.card2 canvas');
-    for(var i = 0; i < aC.length; i++) {
-        aC[i].width = 0;
-        aC[i].height = 0;
-        alert(aC[i].width);
+    function canvas (oC, cx, cy, r, n,str2,stColor) {
+        var gd = oC.getContext("2d");
+        var h = 20;
+        gd.font = h + "px Times New Roman";
+        gd.fillStyle = "red";
+        var d = 0;
+        gd.lineWidth = "15";
+        var timer = setInterval(function(){
+            d += 6;
+            gd.clearRect(0,0,oC.width,oC.height);
+            gd.beginPath();
+            gd.arc(cx,cy,r,d2A(0),d2A(d),false);
+            gd.stroke();
+            //gd.strokeStyle = "rgb("+255*(d/360)+",0,0)";
+            gd.strokeStyle = stColor;
 
-    }*/
+            //文字
+            gd.fillStyle = '#fff';
+            var str = parseInt(d/360*100) + "%";
 
+            var w = gd.measureText(str).width;
+            gd.fillText(str,cx - w/2,cy - h/2);
 
+            var w2 = gd.measureText(str2).width;
+            gd.fillText(str2,cx - w2/2,cy + h);
 
+            if(d >=n){
+                clearInterval(timer);
+            }
+        },15);
 
+        function d2A(n){
+            return n*Math.PI/180;
+        }
+    }
+
+    //需要在选项卡2出现的时候即选项卡的case1里执行的东西
+    function case1() {
+        //由于在其他选项卡显示时，选项卡2状态为隐藏，无法获取oS的宽度和高度，所以加在选项卡2出现时才能获取
+        for (var i = 0; i < aSkill.length; i++) {
+            //给技能描述遮罩设定初始位置
+            var oS = aSkill[i].children[1];
+            oS.style.left = -oS.offsetWidth + 'px';
+            oS.style.top = -oS.offsetHeight + 'px';
+            //给遮罩加运动
+            through(aSkill[i]);
+        }
+
+        var aC = document.querySelectorAll('.card2 canvas');
+
+        for(var i = 0; i < aC.length; i++) {
+
+            aC[i].width = aC[i].parentNode.offsetWidth;
+            aC[i].height =(aC[i].parentNode.offsetHeight)*0.99;
+            var cx = (aC[i].parentNode.offsetWidth)/2;
+            var cy = (aC[i].parentNode.offsetHeight)/2;
+            var r = (aC[i].parentNode.offsetWidth)/2 *0.8;
+            var m = 90;
+            var str2 = 'HTML&CSS';
+            var stColor = '#f90'
+            switch (i) {
+                case 0:
+                    str2 = 'HTML&CSS';
+                    m = 95;
+                    stColor = '#f90';
+                    break;
+                case 1:
+                    str2 = 'JavaScript';
+                    m = 85;
+                    stColor = '#f69';
+                    break;
+                case 2:
+                    str2 = 'HTML5&CSS3';
+                    m = 85;
+                    stColor = 'green';
+                    break;
+                case 3:
+                    str2 = 'jQuery';
+                    m = 70;
+                    stColor = 'red';
+                    break;
+                case 4:
+                    str2 = 'Ajax&Jsonp';
+                    m = 90;
+                    stColor = 'yellow';
+                    break;
+                case 5:
+                    str2 = 'PHP';
+                    m = 50;
+                    stColor = 'blue';
+                    break;
+            }
+
+            var n = 360/100*m;
+
+            //选项卡2出现的时候执行canvas
+            canvas(aC[i], cx, cy, r, n, str2,stColor);
+
+            //鼠标滑入的时候执行canvas;
+            (function(cx,cy,r,n,str2,stColor){
+                aC[i].onmouseover = function () {
+                    canvas(this, cx, cy, r, n, str2,stColor);
+                }
+            })(cx,cy,r,n,str2,stColor)
+        }
+    }
 };
