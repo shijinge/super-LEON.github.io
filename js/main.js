@@ -2,7 +2,6 @@
 window.onload = function () {
     var oWarp = document.querySelector('.warp');
     var oImg = document.querySelector('.box .card1 a');
-    var aText = document.querySelectorAll('.card1 p');
     var oInf = document.querySelector('.information');
     var aHead = document.querySelectorAll('.ahead li');
     var aContent = document.querySelectorAll('.box >div');
@@ -41,10 +40,19 @@ window.onload = function () {
 //为导航添加滑入滑出效果
             aHead[i].onmouseover = function () {
                 this.style.WebkitTransform = 'scale(1.5)';
+                this.style.MozTransform = 'scale(1.5)';
+                this.style.msTransform = 'scale(1.5)';
+                this.style.OTransform = 'scale(1.5))';
+                this.style.transform = 'scale(1.5)';
+
                 aCardtext[index].style.display = 'block';
             };
             aHead[i].onmouseout = function () {
                 this.style.WebkitTransform = 'scale(1)';
+                this.style.MozTransform = 'scale(1)';
+                this.style.msTransform = 'scale(1)';
+                this.style.OTransform = 'scale(1))';
+                this.style.transform = 'scale(1)';
                 aCardtext[index].style.display = 'none';
             };
         })(i);
@@ -55,6 +63,10 @@ window.onload = function () {
     aContent[2].style.left = -aContent[iNow].offsetWidth + 'px';
     aContent[3].style.opacity = 0;
     aContent[4].style.WebkitTransform = 'scale(0.1,0.1)';
+    aContent[4].style.MozTransform = 'scale(0.1,0.1)';
+    aContent[4].style.msTransform = 'scale(0.1,0.1)';
+    aContent[4].style.OTransform = 'scale(0.1,0.1))';
+    aContent[4].style.transform = 'scale(0.1,0.1)';
 
 //选项卡
     function tab() {
@@ -80,6 +92,10 @@ window.onload = function () {
         }
         if(iNow != 4) {
             aContent[4].style.WebkitTransform = 'scale(0.1,0.1)';
+            aContent[4].style.MozTransform = 'scale(0.1,0.1)';
+            aContent[4].style.msTransform = 'scale(0.1,0.1)';
+            aContent[4].style.OTransform = 'scale(0.1,0.1))';
+            aContent[4].style.transform = 'scale(0.1,0.1)';
         }
 
 //为不同的选项卡切换添加不同的效果
@@ -107,6 +123,9 @@ window.onload = function () {
                 });
                 break;
             case 2:
+
+                card3();
+
                 move(aContent[iNow], {top: 0, left: 0}, {duration: 500,
                     easing: Tween.Sine.easeIn,
                     complete: function () {
@@ -131,6 +150,10 @@ window.onload = function () {
 
                 setTimeout(function () {
                     aContent[4].style.WebkitTransform = 'scale(1,1)';
+                    aContent[4].style.MozTransform = 'scale(1,1)';
+                    aContent[4].style.msTransform = 'scale(1,1)';
+                    aContent[4].style.OTransform = 'scale(1,1))';
+                    aContent[4].style.transform = 'scale(1,1)';
                 },0);
                 setTimeout(function(){
                     bOk = true;
@@ -165,15 +188,35 @@ window.onload = function () {
     //添加头像滑入滑出效果
     oImg.onmouseover = function () {
         oInf.style.opacity = 1;
+
         oImg.style.WebkitTransition = '0.5s all ease';
+        oImg.style.MozTransition = '0.5s all ease';
+        oImg.style.msTransition = '0.5s all ease';
+        oImg.style.OTransition = '0.5s all ease';
+        oImg.style.transition = '0.5s all ease';
+
         oImg.style.WebkitTransform = 'scale(1.2,1.2)';
+        oImg.style.MozTransform = 'scale(1.2,1.2)';
+        oImg.style.msTransform = 'scale(1.2,1.2)';
+        oImg.style.OTransform = 'scale(1.2,1.2))';
+        oImg.style.transform = 'scale(1.2,1.2)';
     };
 
     oImg.onmouseout = function () {
         oInf.style.opacity = 0;
+
         oImg.style.WebkitTransition = '0.5s all ease';
+        oImg.style.MozTransition = '0.5s all ease';
+        oImg.style.msTransition = '0.5s all ease';
+        oImg.style.OTransition = '0.5s all ease';
+        oImg.style.transition = '0.5s all ease';
+
         oImg.style.WebkitTransform = 'scale(1,1)';
-    }
+        oImg.style.MozTransform = 'scale(1,1)';
+        oImg.style.msTransform = 'scale(1,1)';
+        oImg.style.OTransform = 'scale(1,1))';
+        oImg.style.transform = 'scale(1,1)';
+    };
 
 //选项卡2
 
@@ -242,7 +285,7 @@ window.onload = function () {
                 case 0:
                    // alert('r');
                     //右
-                    move(oS, {left: oS.offsetWidth, top: 0});
+                    move(oS, {left: oS.offsetWidth+10, top: 0});
                     break;
                 case 1:
                     //alert('r')
@@ -252,7 +295,7 @@ window.onload = function () {
                 case 2:
                     //alert('r')
                     //左
-                    move(oS, {left: -oS.offsetWidth, top: 0});
+                    move(oS, {left: -oS.offsetWidth-10, top: 0});
                     break;
                 case 3:
                     //alert('r')
@@ -266,11 +309,11 @@ window.onload = function () {
 
     function canvas (oC, cx, cy, r, n,str2,stColor) {
         var gd = oC.getContext("2d");
-        var h = 20;
+        var h = r/4;
         gd.font = h + "px Times New Roman";
         gd.fillStyle = "red";
         var d = 0;
-        gd.lineWidth = "15";
+        gd.lineWidth = r/6;
         var timer = setInterval(function(){
             d += 6;
             gd.clearRect(0,0,oC.width,oC.height);
@@ -370,4 +413,38 @@ window.onload = function () {
             })(cx,cy,r,n,str2,stColor)
         }
     }
+
+//选项卡3
+    function card3() {
+        var oPicBox = document.querySelector('.card3 .pic-box');
+        var aPic = oPicBox.children;
+        var aSp = document.querySelectorAll('.card3 .pic-box span');
+        var oPBW = oPicBox.offsetWidth;
+
+        var sW = oPBW * 0.2 / 5;
+        var oPW = oPBW * 0.8;
+        for (var i = 0; i < aPic.length; i++) {
+            aSp[i].style.width = sW + 'px';
+
+            aPic[i].style.left = i * sW + 'px';
+            (function(index) {
+                aPic[i].onmouseover = function (ev) {
+
+                    var oEvent = ev || event;
+                    var oForm = oEvent.fromElement || oEvent.relatedTarget;
+                    //处理onmouseover的bug
+                    if (this.contains(oForm))return;
+                    console.log('滑入了');
+                    for (var j= 0; j < aPic.length; j++) {
+                        if (j <= index) {
+                            move(aPic[j], {left: j * sW}, {duration:1200, easing:Tween.Cubic.easeOut});
+                        }else if (j > index) {
+                            move(aPic[j], {left:oPW + (j-1) *sW}, {duration:1200, easing:Tween.Cubic.easeOut})
+                        }
+                    }
+                }
+            })(i)
+        }
+    }
+
 };

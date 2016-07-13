@@ -88,7 +88,7 @@
 	background-size:100% 100%;
 	opacity:0.2;
 }
-#div1 div .over {position:absolute; left:0; top:214px; width:133px; height:100px; overflow:-hidden;
+#div1 div .over {position:absolute; left:0; top:214px; width:133px; height:100px;
 	-webkit-transform:scale(1,-1);
 	-moz-transform:scale(1,-1);
 	-ms-transform:scale(1,-1);

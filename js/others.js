@@ -4,9 +4,9 @@ var oWarp = document.querySelector('.warp');
 oWarp.style.height = document.documentElement.clientHeight + 'px';
 
 document.documentElement.style.fontSize = 32 / 320 * document.documentElement.clientWidth + 'px';
+//加isReady只允许第一次调用有效；
 var isReady = true;
 function movePic() {
-
 	if (isReady) {
 		isReady = false;
 		var M = 11;
@@ -52,49 +52,8 @@ function movePic() {
 
 
 			oNewDiv.degY = 360 * (i - 1) / M;
-			var oContent1 = '<div class="img">';
-			var oContent2 = '<span class="over"><span class="shadow"></span></span></div>';
-			switch (i) {
-				case 1:
-					oNewDiv.innerHTML = oContent1 + '<a href="www.baidu.com" class="link">点此预览</a>' + oContent2;
-					break;
-				case 0:
-					oNewDiv.innerHTML = '<div class="img">111111<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 2:
-					oNewDiv.innerHTML = '<div class="img">333333<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 3:
-					oNewDiv.innerHTML = '<div class="img">4444<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 4:
-					oNewDiv.innerHTML = '<div class="img">555555<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 5:
-					oNewDiv.innerHTML = '<div class="img">666666<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 6:
-					oNewDiv.innerHTML = '<div class="img">77777<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 7:
-					oNewDiv.innerHTML = '<div class="img">88888<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 8:
-					oNewDiv.innerHTML = '<div class="img">999999<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 9:
-					oNewDiv.innerHTML = '<div class="img">1010<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 10:
-					oNewDiv.innerHTML = '<div class="img">11 11 11<span class="over"><span class="shadow"></span></span></div>';
-					break;
-				case 11:
-					oNewDiv.innerHTML = '<div class="img">121212<span class="over"><span class="shadow"></span></span></div>';
-					break;
-			}
-			/*oNewDiv.innerHTML='<div class="img">1111111111<span class="over"><span class="shadow"></span></span></div>';*/
 
-
+			oNewDiv.innerHTML = '<div class="img"><span class="over"><span class="shadow"></span></span></div>';
 			oNewDiv = oNewDiv.getElementsByClassName('img')[0];
 
 
@@ -127,87 +86,127 @@ function movePic() {
 				this.style.OTransform = 'scale(1,1)';
 				this.style.transform = 'scale(1,1)';
 			};
-			aImg[i].children[0].onclick = function (ev) {
-				alert(1);
-				var ev = ev || event;
-				ev.cancelBubble = true;
+		}
+
+
+		oCard4.onmousedown = function (ev) {
+
+			//为aImg在onmousedown的时候添加点击链接；
+			//如果是move的情况，在move里给禁掉aImg的onclick事件；
+			for(var i = 0; i < aImg.length; i++) {
+				var url = null;
+				switch (i) {
+					case 0:
+						url = 'http://www.baidu.com';
+						break;
+					case 1:
+						url = 'http://www.360.com';
+						break;
+					case 2:
+						url = 'http://www.zhinengshe.com';
+						break;
+					case 3:
+						url = 'http://www.mi.com';
+						break;
+					case 4:
+						url = 'http://www.meizu.com';
+						break;
+					case 5:
+						url = 'http://www.baidu.com';
+						break;
+					case 6:
+						url = 'http://www.baidu.com';
+						break;
+					case 7:
+						url = 'http://www.baidu.com';
+						break;
+					case 8:
+						url = 'http://www.baidu.com';
+						break;
+					case 9:
+						url = 'http://www.baidu.com';
+						break;
+					case 10:
+						url = 'http://www.baidu.com';
+						break;
+					case 11:
+						url = 'http://www.baidu.com';
+						break;
+
+				}
+				(function(url){
+					aImg[i].onclick = function () {
+						window.open(url)
+					}
+				})(url)
+
 			}
 
+			var oEvent = ev || event;
+			var mouseStartX = oEvent.clientX;
+			var mouseStartY = oEvent.clientY;
+			
+			var startX = x;
+			var startY = y;
 
-			oCard4.onmousedown = function (ev) {
+			var lastX = mouseStartX;
+			var lastY = mouseStartY;
 
+			speedX = speedY = 0;
+
+			document.onmousemove = function (ev) {
 				var oEvent = ev || event;
-				var mouseStartX = oEvent.clientX;
-				var mouseStartY = oEvent.clientY;
 
-				var startX = x;
-				var startY = y;
+				y = startY + (oEvent.clientX - mouseStartX) / 10;
+				x = startX - (oEvent.clientY - mouseStartY) / 10;
 
-				var lastX = mouseStartX;
-				var lastY = mouseStartY;
+				speedX = (oEvent.clientX - lastX) / 5;
+				speedY = (oEvent.clientY - lastY) / 5;
 
-				speedX = speedY = 0;
+				fixAll();
 
-				document.onmousemove = function (ev) {
-					var oEvent = ev || event;
+				lastX = oEvent.clientX;
+				lastY = oEvent.clientY;
 
-					y = startY + (oEvent.clientX - mouseStartX) / 10;
-					x = startX - (oEvent.clientY - mouseStartY) / 10;
-
-					speedX = (oEvent.clientX - lastX) / 5;
-					speedY = (oEvent.clientY - lastY) / 5;
-
-					fixAll();
-
-					lastX = oEvent.clientX;
-					lastY = oEvent.clientY;
-				};
-
-				document.onmouseup = function (ev) {
-
-
-					document.onmousemove = null;
-					document.onmouseup = null;
-
-					startMove();
-				};
-
-				stopMove();
-
-				return false;
+				//在move的情况下禁止触发aImg的onclick事件；
+				for(var i = 0; i < aImg.length; i++) {
+					aImg[i].onclick = null;
+				}
 			};
 
-			var timer = null;
+			document.onmouseup = function (ev) {
+				document.onmousemove = null;
+				document.onmouseup = null;
+				
+				startMove();
+			};
+			stopMove();
 
-			function startMove() {
-				clearInterval(timer);
-				timer = setInterval(function () {
-					x -= speedY;
-					y += speedX;
+			return false;
+		};
 
-					speedY *= 0.93;
-					speedX *= 0.93;
+		var timer = null;
 
-					if (Math.abs(speedX) < 0.1 && Math.abs(speedY) < 0.1)
-						stopMove();
+		function startMove() {
+			clearInterval(timer);
+			timer = setInterval(function () {
+				x -= speedY;
+				y += speedX;
 
-					fixAll();
-				}, 30);
-			}
+				speedY *= 0.93;
+				speedX *= 0.93;
 
-			function stopMove() {
-				clearInterval(timer);
-			}
+				if (Math.abs(speedX) < 0.1 && Math.abs(speedY) < 0.1)
+					stopMove();
 
-
-			//aImg[i].style.href = 'www.baidu.com';
-			/*if(Math.abs(speedX)<0.2 && Math.abs(speedY)<0.2){
-			 aImg[i].onclick = function () {
-			 alert(1);
-			 }
-			 }*/
-
+				fixAll();
+			}, 30);
 		}
+
+		function stopMove() {
+			clearInterval(timer);
+		}
+		
 
 		function fixAll() {
 			oDiv.style.WebkitTransform = 'perspective(1000px) rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
