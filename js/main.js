@@ -360,7 +360,7 @@ window.onload = function () {
         for(var i = 0; i < aC.length; i++) {
 
             aC[i].width = aC[i].parentNode.offsetWidth;
-            aC[i].height =(aC[i].parentNode.offsetHeight)*0.99;
+            aC[i].height =(aC[i].parentNode.offsetHeight)*0.98;
             var cx = (aC[i].parentNode.offsetWidth)/2;
             var cy = (aC[i].parentNode.offsetHeight)/2;
             var r = (aC[i].parentNode.offsetWidth)/2 *0.8;

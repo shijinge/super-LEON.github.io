@@ -73,6 +73,7 @@ function movePic() {
 		var aImg = document.querySelectorAll('.img');
 		for (var i = 0; i < aImg.length; i++) {
 			aImg[i].onmouseover = function () {
+				clearInterval(timer2);
 				this.style.WebkitTransform = 'scale(1.3,1.3)';
 				this.style.MozTransform = 'scale(1.3,1.3)';
 				this.style.msTransform = 'scale(1.3,1.3)';
@@ -80,6 +81,11 @@ function movePic() {
 				this.style.transform = 'scale(1.3,1.3)';
 			};
 			aImg[i].onmouseout = function () {
+				clearInterval(timer2);
+				timer2 = setInterval(function(){
+					y += 0.1;
+					fixAll();
+				},15);
 				this.style.WebkitTransform = 'scale(1,1)';
 				this.style.MozTransform = 'scale(1,1)';
 				this.style.msTransform = 'scale(1,1)';
@@ -90,6 +96,8 @@ function movePic() {
 
 
 		oCard4.onmousedown = function (ev) {
+
+			clearInterval(timer2);
 
 			//为aImg在onmousedown的时候添加点击链接；
 			//如果是move的情况，在move里给禁掉aImg的onclick事件；
@@ -163,6 +171,9 @@ function movePic() {
 				speedX = (oEvent.clientX - lastX) / 5;
 				speedY = (oEvent.clientY - lastY) / 5;
 
+
+
+
 				fixAll();
 
 				lastX = oEvent.clientX;
@@ -174,7 +185,7 @@ function movePic() {
 				}
 			};
 
-			document.onmouseup = function (ev) {
+			document.onmouseup = function () {
 				document.onmousemove = null;
 				document.onmouseup = null;
 				
@@ -186,6 +197,18 @@ function movePic() {
 		};
 
 		var timer = null;
+		var timer2 =null;
+
+		setTimeout(function(){
+			clearInterval(timer2);
+			timer2 = setInterval(function(){
+				y += 0.1;
+				fixAll();
+			},15);
+		},4000)
+
+
+
 
 		function startMove() {
 			clearInterval(timer);
@@ -202,6 +225,7 @@ function movePic() {
 				fixAll();
 			}, 30);
 		}
+
 
 		function stopMove() {
 			clearInterval(timer);
