@@ -53,7 +53,7 @@ function movePic() {
 
 			oNewDiv.degY = 360 * (i - 1) / M;
 
-			oNewDiv.innerHTML = '<div class="img"><span class="over"><span class="shadow"></span></span></div>';
+			oNewDiv.innerHTML = '<div class="img"><div class="text">你好</div><span class="over"><span class="shadow"></span></span></div>';
 			oNewDiv = oNewDiv.getElementsByClassName('img')[0];
 
 
@@ -71,6 +71,45 @@ function movePic() {
 		}
 
 		var aImg = document.querySelectorAll('.img');
+		var aText = document.querySelectorAll('.img .text');
+		for(var i = 0; i < aImg.length; i++) {
+			var url = null;
+			switch (i) {
+				case 0:
+					aText[i].innerHTML = '淡入淡出菜单';
+					break;
+				case 1:
+					aText[i].innerHTML = '简易瀑布流';
+					break;
+				case 2:
+					aText[i].innerHTML = '图片放大镜';
+					break;
+				case 3:
+					aText[i].innerHTML = 'iphone屏幕翻页';
+					break;
+				case 4:
+					aText[i].innerHTML = '苹果桌面';
+					break;
+				case 5:
+					aText[i].innerHTML = '分步运动';
+					break;
+				case 6:
+					aText[i].innerHTML = '无缝轮播图';
+					break;
+				case 7:
+					aText[i].innerHTML = '阴影拖拽';
+					break;
+				case 8:
+					aText[i].innerHTML = 'chrome应用商店';
+					break;
+				case 9:
+					aText[i].innerHTML = '3D图片翻转';
+					break;
+				case 10:
+					aText[i].innerHTML = '弹性运动';
+					break;
+			}
+		}
 		for (var i = 0; i < aImg.length; i++) {
 			aImg[i].onmouseover = function () {
 				clearInterval(timer2);
@@ -105,40 +144,37 @@ function movePic() {
 				var url = null;
 				switch (i) {
 					case 0:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/fadeinout.html';
 						break;
 					case 1:
-						url = 'http://www.360.com';
+						url = 'pages/javascript/simplefalls.html';
 						break;
 					case 2:
-						url = 'http://www.zhinengshe.com';
+						url = 'pages/javascript/zoom/index.html';
 						break;
 					case 3:
-						url = 'http://www.mi.com';
+						url = 'pages/javascript/iphoneppv/index.html';
 						break;
 					case 4:
-						url = 'http://www.meizu.com';
+						url = 'pages/javascript/appledock/index.html';
 						break;
 					case 5:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/stepmove.html';
 						break;
 					case 6:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/picturesc/index.html';
 						break;
 					case 7:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/shadowdrag.html';
 						break;
 					case 8:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/chromeapp/index.html';
 						break;
 					case 9:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/3dpto/index.html';
 						break;
 					case 10:
-						url = 'http://www.baidu.com';
-						break;
-					case 11:
-						url = 'http://www.baidu.com';
+						url = 'pages/javascript/elastmove.html';
 						break;
 
 				}

@@ -147,6 +147,7 @@ window.onload = function () {
                 });
                 break;
             case 4:
+                card5();
 
                 setTimeout(function () {
                     aContent[4].style.WebkitTransform = 'scale(1,1)';
@@ -434,7 +435,6 @@ window.onload = function () {
                     var oForm = oEvent.fromElement || oEvent.relatedTarget;
                     //处理onmouseover的bug
                     if (this.contains(oForm))return;
-                    console.log('滑入了');
                     for (var j= 0; j < aPic.length; j++) {
                         if (j <= index) {
                             move(aPic[j], {left: j * sW}, {duration:1200, easing:Tween.Cubic.easeOut});
@@ -446,5 +446,136 @@ window.onload = function () {
             })(i)
         }
     }
+
+//选项卡5
+    function card5() {
+        var oBox=document.querySelector('.card5 .card5-box');
+        var oUl=oBox.children[0];
+        var aLi=document.querySelectorAll('.card5 ul li');
+        var aImg=oUl.getElementsByTagName('a');
+        var aSpan=document.querySelectorAll('.card5 .card5-box span');
+
+
+        oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+        oUl.onmousedown=function(ev){
+            var oEvt=ev||event;
+            var disX=oEvt.clientX-oUl.offsetLeft;
+
+            var l = null;
+
+            //为aImg在onmousedown的时候添加点击链接；
+            //如果是move的情况，在move里给禁掉aImg的onclick事件；
+            for(var i = 0; i < aImg.length; i++) {
+                var url = null;
+                switch (i) {
+                    case 0:
+                        url = 'pages/h5/3dlogin/index.html';
+                        break;
+                    case 1:
+                        url = 'pages/h5/clock.html';
+                        break;
+                    case 2:
+                        url = 'pages/h5/3dbox.html';
+                        break;
+                    case 3:
+                        url = 'pages/h5/canvasss.html';
+                        break;
+                    case 4:
+                        url = 'pages/h5/canvaspb.html';
+                        break;
+                    case 5:
+                        url = 'pages/dataint/baidusearch/index.html';
+                        break;
+                    case 6:
+                        url = 'pages/dataint/phonesearch/index.html';
+                        break;
+                    case 7:
+                        url = 'pages/dataint/mywish/index.html';
+                        break;
+                    case 8:
+                        url = 'pages/dataint/weibo/index.html';
+                        break;
+                }
+                (function(url) {
+                    aImg[i].onclick = function () {
+                        window.open(url);
+                    }
+                })(url);
+            }
+
+            document.onmousemove=function(ev){
+
+                //在move的情况下禁止触发aImg的onclick事件；
+                for (var i = 0; i < aImg.length; i++) {
+                    aImg[i].onclick = null;
+                }
+
+
+                var oEvt=ev||event;
+                l=oEvt.clientX-disX;
+                if(l>oBox.offsetWidth/2- 0.5 * aLi[0].offsetWidth){
+                    l=oBox.offsetWidth/2-0.5 * aLi[0].offsetWidth;
+                }
+
+                if(l<oBox.offsetWidth/2-oUl.offsetWidth+aLi[0].offsetWidth/2){
+                    l=oBox.offsetWidth/2-oUl.offsetWidth+aLi[0].offsetWidth/2;
+                }
+
+                oUl.style.left=l+'px';
+
+                setSize();
+            }
+            document.onmouseup=function(){
+                document.onmousemove=document.onmouseup=null;
+                //var n = Math.round(l / aLi[0].offsetWidth);
+
+                for(var i = 0; i < aLi.length; i++) {
+                    var dis=oBox.offsetWidth/2-(oUl.offsetLeft+aLi[i].offsetLeft+aLi[i].offsetWidth/2);
+
+                    if(aLi[i].offsetWidth/2 > Math.abs(dis)) {
+                        l = oBox.offsetWidth/2 - (i+0.5)*aLi[i].offsetWidth;
+
+                        move(oUl,{left:l},{complete:function(){clearInterval(timer);}});
+                        var timer = setInterval(setSize,30);
+                        
+                        console.log(l);
+                    }
+                }
+
+
+
+
+            }
+            return false;
+        };
+
+        function setSize(){
+            for(var i=0; i<aLi.length; i++){
+                //dis-屏幕中心距离每个Li中心的距离；
+                var dis=oBox.offsetWidth/2-(oUl.offsetLeft+aLi[i].offsetLeft+aLi[i].offsetWidth/2);
+                dis=Math.abs(dis);
+                var scale=1-dis/800;
+                if(scale<0.5) scale=0.5;
+                aImg[i].style.width=520*scale+'px';
+                aImg[i].style.height=358*scale+'px';
+
+                //Li[i]在屏幕中心但是aImg[i]此刻已经放大，需要拉回多出的部分的一半；
+                aImg[i].style.marginLeft=-(aImg[i].offsetWidth-aLi[i].offsetWidth)/2+'px';
+                aImg[i].style.marginTop=-(aImg[i].offsetHeight-aLi[i].offsetHeight)/2+'px';
+                aLi[i].style.zIndex=parseInt(scale*10000);
+                aLi[i].style.opacity=scale;
+                aSpan[i].style.opacity = scale;
+
+            }
+        }
+        setCenter(2);
+        function setCenter(n){
+            oUl.style.left=oBox.offsetWidth/2-(n+0.5)*aLi[0].offsetWidth+'px';
+        }
+        setSize();
+        window.onresize=setSize;
+    }
+
+
 
 };

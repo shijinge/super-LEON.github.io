@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>淡入淡出下拉菜单</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+body {background: #ccc;}
+
+#ul1 {width:408px; margin:10px auto;}
+#ul1 .item {float:left; width:100px; height:30px; line-height:30px; text-align:center; position:relative; border:1px solid black;}
+#ul1 .menu {position:absolute; left:-1px; top:30px; width:100px; border:1px solid black; height:0px; overflow:hidden; opacity:0; filter:alpha(opacity:0);}
+</style>
+<script src="move8.js"></script>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.children;
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].onmouseover=function(){
+			var thisUl = this.children[0];	
+			var h = thisUl.children.length*thisUl.children[0].offsetHeight;
+			move(thisUl,{height:h,opacity:1},{time:300});
+		};
+		aLi[i].onmouseout=function(){
+			var thisUl = this.children[0];	
+			move(thisUl,{height:0,opacity:0},{time:300});	
+		};	
+	}
+};
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li class="item">
+    	首页
+        <ul class="menu">
+        	<li>111</li>
+        	<li>222</li>
+        	<li>333</li>
+        	<li>444</li>
+        </ul>
+    </li>
+	<li class="item">
+    	新闻
+        <ul class="menu">
+        	<li>111</li>
+        	<li>222</li>
+        </ul>
+    </li>
+	<li class="item">
+    	资讯
+        <ul class="menu">
+        	<li>111</li>
+        	<li>333</li>
+        	<li>444</li>
+        </ul>
+    </li>
+	<li class="item">
+    	论坛
+        <ul class="menu">
+        	<li>111</li>
+        	<li>333</li>
+        	<li>444</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
