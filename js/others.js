@@ -110,28 +110,32 @@ function movePic() {
 					break;
 			}
 		}
-		for (var i = 0; i < aImg.length; i++) {
-			aImg[i].onmouseover = function () {
-				clearInterval(timer2);
-				this.style.WebkitTransform = 'scale(1.3,1.3)';
-				this.style.MozTransform = 'scale(1.3,1.3)';
-				this.style.msTransform = 'scale(1.3,1.3)';
-				this.style.OTransform = 'scale(1.3,1.3)';
-				this.style.transform = 'scale(1.3,1.3)';
-			};
-			aImg[i].onmouseout = function () {
-				clearInterval(timer2);
-				timer2 = setInterval(function(){
-					y += 0.1;
-					fixAll();
-				},15);
-				this.style.WebkitTransform = 'scale(1,1)';
-				this.style.MozTransform = 'scale(1,1)';
-				this.style.msTransform = 'scale(1,1)';
-				this.style.OTransform = 'scale(1,1)';
-				this.style.transform = 'scale(1,1)';
-			};
-		}
+
+		setTimeout(function(){
+			for (var i = 0; i < aImg.length; i++) {
+				aImg[i].onmouseover = function () {
+					clearInterval(timer2);
+					this.style.WebkitTransform = 'scale(1.3,1.3)';
+					this.style.MozTransform = 'scale(1.3,1.3)';
+					this.style.msTransform = 'scale(1.3,1.3)';
+					this.style.OTransform = 'scale(1.3,1.3)';
+					this.style.transform = 'scale(1.3,1.3)';
+				};
+				aImg[i].onmouseout = function () {
+					clearInterval(timer2);
+					timer2 = setInterval(function(){
+						y += 0.1;
+						fixAll();
+					},15);
+					this.style.WebkitTransform = 'scale(1,1)';
+					this.style.MozTransform = 'scale(1,1)';
+					this.style.msTransform = 'scale(1,1)';
+					this.style.OTransform = 'scale(1,1)';
+					this.style.transform = 'scale(1,1)';
+				};
+			}
+		},4000)
+
 
 
 		oCard4.onmousedown = function (ev) {
@@ -348,3 +352,66 @@ function movePic() {
 })();
 
 //canvas画心结束
+
+(function(){
+	function d2a(n){
+		return n*Math.PI/180;
+	}
+
+	var oC = document.getElementById("c1");
+	var gd = oC.getContext("2d");
+	var cx = 120;
+	var cy = 137;
+	var r  = 60;
+
+	var h = 23;
+	gd.font = h + "px kaiti";
+
+
+	setInterval(function(){
+		gd.clearRect(0,0,oC.width,oC.height);
+		var oDate = new Date();
+		var iH = oDate.getHours();
+
+		var iM = oDate.getMinutes();
+		var iS = oDate.getSeconds();
+		var iMs = oDate.getMilliseconds();
+
+		var iH2 = iH;
+		if(iH2 > 12) {
+			iH2 = iH2 - 12;
+		}
+
+
+		drawArc(cx,cy,r,0,iH2*30+iM/60*30,"red");//小时
+		drawArc(cx,cy,r+20,0,iM*6+iS/60*6,"green");//分钟
+		drawArc(cx,cy,r+40,0,iS*6+iMs/1000*6,"yellow");//秒
+
+		//填充文字
+		function s2D(n) {
+			if (n < 10) {
+				return '0' + n;
+			}else {
+				return n;
+			}
+		}
+		var str = [s2D(iH) ,s2D(iM) ,s2D(iS)].join(":");
+		var w = gd.measureText(str).width;
+		gd.fillText(str,cx-w/2,cy+h/2);
+		gd.fillStyle = '#fff';
+
+	},30);
+
+	function drawArc(cx,cy,r,s,e,color){
+		s -= 90;
+		e -= 90;
+		gd.beginPath();
+		gd.lineWidth = "20";
+		gd.arc(cx,cy,r,d2a(s),d2a(e),false);
+		gd.strokeStyle = color;
+		gd.stroke();
+	}
+
+})();
+
+

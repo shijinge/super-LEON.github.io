@@ -13,6 +13,7 @@ window.onload = function () {
     var bOk = true;
 
 //初次加载自适应屏幕
+    changeClient();
     window.onresize = changeClient;
 
 //窗口大小改变自适应屏幕
@@ -23,6 +24,14 @@ window.onload = function () {
 
 //初次加载在页面未加载出之前导航条会出现，所以css里先display：none，页面加载后再display：block
     aHead[0].parentNode.style.display = 'block';
+
+    if(window.navigator.userAgent.indexOf('MSIE') != -1) {
+        alert('本站部分效果不支持ie浏览器，页面可能无法正常显示，请更换其他浏览器');
+    }else if (window.navigator.userAgent.indexOf('Trident') != -1) {
+        alert('本站部分效果不支持ie浏览器，页面可能无法正常显示，请更换其他浏览器');
+    }else if (window.navigator.userAgent.indexOf('Edge') != -1) {
+        alert('本站不支持edge浏览器，页面可能无法正常显示，请更换其他浏览器');
+    }
 
 //为导航添加点击
     for(var i = 0; i < aHead.length; i++) {
@@ -557,7 +566,8 @@ window.onload = function () {
                 var scale=1-dis/800;
                 if(scale<0.5) scale=0.5;
                 aImg[i].style.width=520*scale+'px';
-                aImg[i].style.height=358*scale+'px';
+                //aImg[i].style.height=358*scale+'px';
+                aImg[i].style.height=450*scale+'px';
 
                 //Li[i]在屏幕中心但是aImg[i]此刻已经放大，需要拉回多出的部分的一半；
                 aImg[i].style.marginLeft=-(aImg[i].offsetWidth-aLi[i].offsetWidth)/2+'px';
