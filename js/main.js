@@ -499,10 +499,10 @@ window.onload = function () {
                         url = 'pages/dataint/phonesearch/index.html';
                         break;
                     case 7:
-                        url = 'pages/dataint/mywish/index.html';
+                        url = 'http://www.liangguangguang.com/pages/dataint/mywish/index.html';
                         break;
                     case 8:
-                        url = 'pages/dataint/weibo/index.html';
+                        url = 'http://www.liangguangguang.com/pages/dataint/weibo/index.html';
                         break;
                 }
                 (function(url) {
