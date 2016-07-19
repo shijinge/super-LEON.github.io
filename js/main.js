@@ -496,7 +496,7 @@ window.onload = function () {
                         url = 'pages/dataint/baidusearch/index.html';
                         break;
                     case 6:
-                        url = 'pages/dataint/phonesearch/index.html';
+                        url = 'http://www.liangguangguang.com/pages/dataint/phonesearch/index.html';
                         break;
                     case 7:
                         url = 'http://www.liangguangguang.com/pages/dataint/mywish/index.html';
