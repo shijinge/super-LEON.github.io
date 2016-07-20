@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>简易点歌台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            background: #ccc;
+        }
+        h2 {
+            width:100%;
+            text-align:center;
+            font-size:30px;
+            color:#f90;
+            margin-top:100px;
+            margin-left:-20px;
+        }
+
+        ul {
+            width: 200px;
+            margin: 40px auto;
+        }
+
+        ul li {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom:10px;
+            font: 20px "微软雅黑";
+        }
+
+        li.active {
+            background: url(play.gif) no-repeat right;
+        }
+        li.act {background:red;}
+    </style>
+    <script>
+        window.onload = function () {
+            var arr = ['千千阙歌', '时间都去哪儿了', '小苹果', '夜的钢琴曲', '雨的印记'];
+            var oA = document.querySelector('#audio');
+            var aLi = document.querySelectorAll('ul li');
+            var iNow = 0;
+            for (var i = 0; i < aLi.length; i++) {
+
+
+
+                aLi[i].onmouseover = function() {
+                    for (var i = 0; i < aLi.length; i++) {
+                        aLi[i].style.color = '#000';
+                    }
+                    this.style.color = '#f90';
+                };
+                aLi[i].onmouseout = function() {
+                    if (this.className == 'active') {
+                        this.style.color = '#f90';
+                    } else {
+                        this.style.color = '#000';
+                    }
+                };
+
+
+
+                (function (index) {
+                    aLi[i].onclick = function () {
+                        iNow = index;
+                        tab();
+                    };
+                })(i);
+            }
+            function tab() {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    //aLi[i].onmouseover = null;
+                }
+                aLi[iNow].className = 'active ';
+
+                oA.src = 'mp3/' + arr[iNow] + '.mp3';
+                oA.play();
+            }
+        };
+    </script>
+</head>
+
+<body>
+<audio id="audio"></audio>
+<h2>简易点歌台</h2>
+<ul>
+    <li>千千阙歌</li>
+    <li>时间都去哪儿了</li>
+    <li>小苹果</li>
+    <li>夜的钢琴曲</li>
+    <li>雨的印记</li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

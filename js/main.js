@@ -197,6 +197,11 @@ window.onload = function () {
 //选项卡1
     //添加头像滑入滑出效果
     oImg.onmouseover = function () {
+        oInf.style.WebkitTransition = '1s all ease';
+        oInf.style.MozTransition = '1s all ease';
+        oInf.style.msTransition = '1s all ease';
+        oInf.style.OTransition = '1s all ease';
+        oInf.style.transition = '1s all ease';
         oInf.style.opacity = 1;
 
         oImg.style.WebkitTransition = '0.5s all ease';
@@ -213,7 +218,13 @@ window.onload = function () {
     };
 
     oImg.onmouseout = function () {
+        oInf.style.WebkitTransition = '8s all ease';
+        oInf.style.MozTransition = '8s all ease';
+        oInf.style.msTransition = '8s all ease';
+        oInf.style.OTransition = '8s all ease';
+        oInf.style.transition = '8s all ease';
         oInf.style.opacity = 0;
+
 
         oImg.style.WebkitTransition = '0.5s all ease';
         oImg.style.MozTransition = '0.5s all ease';
@@ -481,27 +492,30 @@ window.onload = function () {
                         url = 'pages/h5/3dlogin/index.html';
                         break;
                     case 1:
-                        url = 'pages/h5/clock.html';
+                        url = 'pages/h5/audioplayer/index.html';
                         break;
                     case 2:
-                        url = 'pages/h5/3dbox.html';
+                        url = 'pages/h5/clock.html';
                         break;
                     case 3:
-                        url = 'pages/h5/canvasss.html';
+                        url = 'pages/h5/3dbox.html';
                         break;
                     case 4:
-                        url = 'pages/h5/canvaspb.html';
+                        url = 'pages/h5/canvasss.html';
                         break;
                     case 5:
-                        url = 'pages/dataint/baidusearch/index.html';
+                        url = 'pages/h5/boom/index.html';
                         break;
                     case 6:
-                        url = 'http://www.liangguangguang.com/pages/dataint/phonesearch/index.html';
+                        url = 'pages/dataint/baidusearch/index.html';
                         break;
                     case 7:
-                        url = 'http://www.liangguangguang.com/pages/dataint/mywish/index.html';
+                        url = 'http://www.liangguangguang.com/pages/dataint/phonesearch/index.html';
                         break;
                     case 8:
+                        url = 'http://www.liangguangguang.com/pages/dataint/mywish/index.html';
+                        break;
+                    case 9:
                         url = 'http://www.liangguangguang.com/pages/dataint/weibo/index.html';
                         break;
                 }

@@ -109,6 +109,8 @@ html {font-size: 32px;}
     transform: rotateX(0) rotateY(0);
     display: none;
 }
+/*f90主体色*/
+.f90 {color:#f90;}
 
 /*选项卡1*/
 .box .card1 {
