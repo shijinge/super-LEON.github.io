@@ -396,17 +396,17 @@ window.onload = function () {
                     break;
                 case 1:
                     str2 = 'JavaScript';
-                    m = 85;
+                    m = 90;
                     stColor = '#f69';
                     break;
                 case 2:
                     str2 = 'HTML5&CSS3';
-                    m = 85;
+                    m = 90;
                     stColor = 'green';
                     break;
                 case 3:
                     str2 = 'jQuery';
-                    m = 70;
+                    m = 80;
                     stColor = 'red';
                     break;
                 case 4:
