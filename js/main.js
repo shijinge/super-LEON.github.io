@@ -410,13 +410,13 @@ window.onload = function () {
                     stColor = 'red';
                     break;
                 case 4:
-                    str2 = 'Ajax&Jsonp';
+                    str2 = 'AJAX&JSONP';
                     m = 90;
                     stColor = 'yellow';
                     break;
                 case 5:
-                    str2 = 'PHP';
-                    m = 50;
+                    str2 = 'Bootstrap';
+                    m = 80;
                     stColor = 'blue';
                     break;
             }
